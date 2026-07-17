@@ -8,7 +8,7 @@ Agent/CLI for theorem proving and formal verification
   (`afi-cli`) — the runtime package has no third-party dependencies.
 - **A mesh identity** — `culture.yaml` (`suffix` + `backend`) and the matching
   prompt file (`CLAUDE.md` for `backend: claude`).
-- **The canonical guildmaster skill kit** (11 skills) under `.claude/skills/`,
+- **The canonical guildmaster skill kit** (18 skills) under `.claude/skills/`,
   vendored cite-don't-import. See [`docs/skill-sources.md`](docs/skill-sources.md).
 - **A build + deploy baseline** — pytest, lint, the agent-first rubric gate, and
   PyPI Trusted Publishing wired into GitHub Actions.
@@ -18,12 +18,15 @@ Agent/CLI for theorem proving and formal verification
 ```bash
 uv sync
 uv run pytest -n auto                 # run the test suite
-uv run prove-cli whoami  # identity from culture.yaml
-uv run prove-cli learn   # self-teaching prompt (add --json)
+uv run prove whoami      # identity from culture.yaml
+uv run prove learn       # self-teaching prompt (add --json)
 uv run teken cli doctor . --strict    # the agent-first rubric gate CI runs
 ```
 
 ## CLI
+
+The installed console command is `prove` (the PyPI distribution is named
+`prove-cli`). Invoke every verb below as `prove <verb>`:
 
 | Verb | What it does |
 |------|--------------|
