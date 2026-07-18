@@ -118,7 +118,12 @@ itself (distinct from the global `overview`, which describes the agent).
 
 ENTRIES: dict[tuple[str, ...], str] = {
     (): _ROOT,
+    # Both the distribution name (`prove-cli`) and the installed console command
+    # (`prove`, from [project.scripts]) resolve to the root entry, so `explain
+    # prove` and `explain prove-cli` both work. The agent-first rubric probes
+    # `explain <console-command>`, i.e. `explain prove`.
     ("prove-cli",): _ROOT,
+    ("prove",): _ROOT,
     ("whoami",): _WHOAMI,
     ("learn",): _LEARN,
     ("explain",): _EXPLAIN,

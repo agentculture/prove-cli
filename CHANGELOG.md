@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/). This project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2026-07-18
+
+### Changed
+
+- Re-initialized `CLAUDE.md` from the bootstrap seed into a full runtime prompt: CLI dispatch/error/output contracts, the `explain` catalog, how to add a verb/noun, the `doctor` identity invariants, and the AgentCulture PR/version/skills conventions. Preserves the existing memory-discipline "Conventions and workflow" section.
+
+### Fixed
+
+- `README.md` and the Quickstart documented `uv run prove-cli …`, but the installed console script is `prove` (`[project.scripts]`); corrected the invocation examples and noted the distribution-vs-command naming split.
+- Corrected the stale skill-kit count in `README.md` and `CLAUDE.md` (now 18 vendored skills).
+- **Agent-first rubric gate (`teken cli doctor . --strict`) was red** — the `explain` catalog keyed its root entry only under the distribution name (`prove-cli`), so `explain prove` (the rubric probes the installed console command) exited 1. Added a `("prove",)` catalog alias so both `explain prove` and `explain prove-cli` resolve to the root. This unblocks the `lint` CI job, which was failing on `origin/main` for the same reason.
+
 ## [0.4.0] - 2026-06-24
 
 ### Added
